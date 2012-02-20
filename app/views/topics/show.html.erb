@@ -1,0 +1,19 @@
+<h2>
+  <%= @topic.title %>
+  <div>
+    <small><%= @topic.descritpion %></small>
+  </div>
+</h2>
+
+<p id="notice"><%= notice %></p>
+
+<div>
+  <%= render @topic.posts %>
+</div>
+
+<div>
+  <h3>Szólj hozzá!</h3>
+  <%= render "posts/form" %>
+</div>
+
+

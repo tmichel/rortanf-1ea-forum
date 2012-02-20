@@ -1,0 +1,12 @@
+<p>
+  <div>
+    <%= post.author %> írta
+    <%= post.created_at.strftime "%Y.%m.%d %H:%M" %>-kor
+  </div>
+  <div>
+    <%= post.content%>
+  </div>
+  <div>
+    <%= link_to "Kimoderál", [post.topic, post], :method => :delete, :confirm => "Biztos kimoderálod ezt a hozzászólást?" %>
+  </div>
+</p>

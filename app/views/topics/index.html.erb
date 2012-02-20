@@ -1,0 +1,26 @@
+<h1>Listing topics</h1>
+
+<table>
+  <tr>
+    <th>Cím</th>
+    <th>Leírás</th>
+    <th>Hozzászólások száma</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @topics.each do |topic| %>
+  <tr>
+    <td><%= topic.title %></td>
+    <td><%= topic.descritpion %></td>
+    <td><%= topic.posts.count %></td>
+    <td><%= link_to 'Mutasd!', topic %></td>
+    <td><%= link_to 'Szerkesztés', edit_topic_path(topic) %></td>
+    <td><%= link_to 'Törlés', topic, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Topic', new_topic_path %>
