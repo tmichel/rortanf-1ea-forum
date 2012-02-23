@@ -1,0 +1,33 @@
+<h2>Regisztráció</h2>
+<div class="error">
+  <% if @user.errors.count > 0%>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
+<div>
+  <%= form_for @user, :url => signup_path do |f| %>
+    <div class="field">
+      <%= f.label :name, "Név" %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :email, "Email" %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :password, "Jelszó" %><br />
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation, "Jelszó még egyszer" %><br />
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="field">
+      <%= f.submit "Regisztrálok!" %>
+    </div>
+  <% end %>
+</div>

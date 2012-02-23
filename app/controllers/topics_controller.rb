@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  before_filter :login_required, :except => [:index, :show]
+  
   # GET /topics
   # GET /topics.json
   def index

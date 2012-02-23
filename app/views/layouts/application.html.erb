@@ -7,11 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-  <h1><%= link_to "Super forum", :topics %></h1>
-  <p>ez minden oldalol megjelenik</p>
-
-  <%= yield %>
-
+  <div id="mainwrapper" style="width:1000px;">
+    <div style="float: right; text-align: right;">
+    <% if logged_in? %>
+      Hello <%= current_user.name %><br/>
+      <%= link_to "kijelentkezés", logout_path, :method => :delete %>
+    <%else%>
+      <%= link_to "Lépj be", login_path %>
+      vagy
+      <%= link_to "regisztrálj", signup_path %>
+    <%end%>
+    </div>
+    <h1><%= link_to "Super forum", :topics %></h1>
+    
+    <%= yield %>
+  </div>
 </body>
 </html>

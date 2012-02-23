@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_filter :login_required
   
   def new
     @post = Post.new
@@ -6,7 +7,10 @@ class PostsController < ApplicationController
   
   def create
     topic = Topic.find(params[:topic_id])
-    post = topic.posts.create(params[:post])
+    post = topic.posts.new(params[:post])
+    post.author = current_user.name
+    post.user = current_user
+    post.save
     redirect_to topic
   end
   
