@@ -16,8 +16,12 @@ class PostsController < ApplicationController
   
   def destroy
     topic = Topic.find(params[:topic_id])
-    post = topic.posts.find(params[:id])
-    post.destroy
-    redirect_to topic
+    post = topic.posts.includes(:user).find(params[:id])
+    if post.user == current_user
+      post.destroy
+      redirect_to topic
+    else
+      redirect_to topic, :alert => "Csak a sajat kommented torolheted."
+    end
   end
 end
